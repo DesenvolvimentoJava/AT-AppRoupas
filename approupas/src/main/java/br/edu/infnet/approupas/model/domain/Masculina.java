@@ -7,6 +7,19 @@ public class Masculina extends Roupa {
 	private String composicao;
 	
 	
+	public Masculina(int cod_prod, String descricao, float valor, int quantidade) {
+		super(cod_prod, descricao, valor, quantidade);
+	}
+	
+	
+	@Override
+	public float calcularValorRoupa() {
+		
+		return (float) ((getValor() * getQuantidade()) + (bordado ? 2.5 * getQuantidade() : 1.5 * getQuantidade()));
+	}
+	
+	
+	
 	public boolean isBordado() {
 		return bordado;
 	}

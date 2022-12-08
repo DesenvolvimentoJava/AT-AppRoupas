@@ -6,6 +6,15 @@ public class Feminina extends Roupa {
 	private String tamanho;
 	private String colecao;
 	
+	public Feminina(int cod_prod, String descricao, float valor, int quantidade) {
+		super(cod_prod, descricao, valor, quantidade);
+	}
+	
+	@Override
+	public float calcularValorRoupa() {
+		return 0;
+	}
+	
 	
 	public boolean isEstampa() {
 		return estampa;

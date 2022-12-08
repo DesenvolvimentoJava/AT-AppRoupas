@@ -6,6 +6,16 @@ public class Infantil extends Roupa {
 	private int numeracao;
 	private String cor;
 	
+	public Infantil(int cod_prod, String descricao, float valor, int quantidade) {
+		super(cod_prod, descricao, valor, quantidade);
+	}
+	
+	
+	@Override
+	public float calcularValorRoupa() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	public boolean isConjunto() {
 		return conjunto;

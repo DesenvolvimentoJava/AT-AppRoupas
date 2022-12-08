@@ -1,32 +1,47 @@
 package br.edu.infnet.approupas.model.domain;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Compra {
 	
-	private int cod_compra;
 	private String descricao;
-	private LocalDate data;
+	private boolean loja;
+	private LocalDateTime data;
 	private Cliente cliente;
 	private List<Roupa> roupas;
 	
 	
-	public LocalDate getData() {
-		return data;
-	}	
+	public Compra() {
+		data = LocalDateTime.now();
+	}
 	
-	public int getCod_compra() {
-		return cod_compra;
+	@Override
+	public String toString() {
+		
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+				
+		return String.format("%s;%s;%s",
+				descricao,
+				loja ? "Sim" : "Não",
+				data.format(formato)
+				);
+
 	}
-	public void setCod_compra(int cod_compra) {
-		this.cod_compra = cod_compra;
-	}
+		
+
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public boolean isLoja() {
+		return loja;
+	}
+	public void setLoja(boolean loja) {
+		this.loja = loja;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -40,6 +55,13 @@ public class Compra {
 	public void setRoupas(List<Roupa> roupas) {
 		this.roupas = roupas;
 	}
+	public LocalDateTime getData() {
+		return data;
+	}
+	
+	
+	
+	
 	
 	
 	

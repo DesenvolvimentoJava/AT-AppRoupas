@@ -12,7 +12,23 @@ public class Feminina extends Roupa {
 	
 	@Override
 	public float calcularValorRoupa() {
-		return 0;
+		return (float) ((getValor() * getQuantidade()) + 
+				(estampa ? 5.0 * getQuantidade() : 1.0 * getQuantidade()));
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append(";");
+		sb.append(estampa);
+		sb.append(";");
+		sb.append(tamanho);
+		sb.append(";");
+		sb.append(colecao);
+		
+		return sb.toString();
 	}
 	
 	

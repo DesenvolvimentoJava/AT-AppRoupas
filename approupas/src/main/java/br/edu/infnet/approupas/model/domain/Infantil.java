@@ -13,8 +13,23 @@ public class Infantil extends Roupa {
 	
 	@Override
 	public float calcularValorRoupa() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return (float) ((getValor() * getQuantidade()) + 
+				(conjunto ? 10.0 * getQuantidade() : 0 * getQuantidade()));
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append(";");
+		sb.append(conjunto);
+		sb.append(";");
+		sb.append(numeracao);
+		sb.append(";");
+		sb.append(cor);
+		
+		return sb.toString();
 	}
 	
 	public boolean isConjunto() {

@@ -15,9 +15,24 @@ public class Masculina extends Roupa {
 	@Override
 	public float calcularValorRoupa() {
 		
-		return (float) ((getValor() * getQuantidade()) + (bordado ? 2.5 * getQuantidade() : 1.5 * getQuantidade()));
+		return (float) ((getValor() * getQuantidade()) + 
+				(bordado ? 2.5 * getQuantidade() : 1.5 * getQuantidade()));
 	}
 	
+	@Override
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append(";");
+		sb.append(bordado);
+		sb.append(";");
+		sb.append(tamanho);
+		sb.append(";");
+		sb.append(composicao);
+		
+		return sb.toString();
+	}
 	
 	
 	public boolean isBordado() {

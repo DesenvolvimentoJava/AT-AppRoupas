@@ -22,7 +22,7 @@ public class MasculinaTest {
 		
 		Masculina m3 = new Masculina(123,"Calça", 24, 5);
 		m3.setBordado(false);
-		m3.setComposicao("33% VISCOSE");
+		m3.setComposicao("33% Viscose");
 		m3.setTamanho("M");
 		System.out.println(m3);
 		System.out.println(m3.calcularValorRoupa());

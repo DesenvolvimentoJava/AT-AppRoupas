@@ -1,5 +1,7 @@
 package br.edu.infnet.approupas.model.domain;
 
+import br.edu.infnet.approupas.model.exceptions.ClienteInvalidoException;
+
 public class Cliente {
 	
 	private String nome;
@@ -7,7 +9,21 @@ public class Cliente {
 	private String endereco;
 	private String email;
 	
-	public Cliente(String nome, String cpf, String endereco, String email) {
+	public Cliente(String nome, String cpf, String endereco, String email) throws ClienteInvalidoException {
+		
+		if(nome == null){
+			throw new ClienteInvalidoException("O nome do cliente deve ser prenchido!");
+		}
+		if(cpf == null){
+			throw new ClienteInvalidoException("O cpf do cliente deve ser prenchido!");
+		}
+		if(endereco == null){
+			throw new ClienteInvalidoException("O endereco do cliente deve ser prenchido!");
+		}
+		if(email == null){
+			throw new ClienteInvalidoException("O e-mail do cliente deve ser prenchido!");
+		}
+
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;

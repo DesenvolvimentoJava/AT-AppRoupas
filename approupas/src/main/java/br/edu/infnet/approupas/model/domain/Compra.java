@@ -6,8 +6,11 @@ import java.util.List;
 
 public class Compra {
 	
+	private static int sequence = 1;
+	
+	private int id_compra;
 	private String descricao;
-	private boolean loja;
+	private boolean varejo;
 	private LocalDateTime data;
 	private Cliente cliente;
 	private List<Roupa> roupas;
@@ -15,6 +18,19 @@ public class Compra {
 	
 	public Compra() {
 		data = LocalDateTime.now();
+		this.id_compra = sequence++;
+	}
+	
+	public void imprimir() {
+		System.out.println("Pedido: " + this);
+		System.out.println("Cliente: " + cliente);
+		System.out.println("Qtde Produtos: " + roupas.size());
+		System.out.println("Roupas: ");
+		
+		for(Roupa produto : roupas) {
+			System.out.println(" - " + produto.getDescricao());
+		}
+		
 	}
 	
 	@Override
@@ -22,12 +38,12 @@ public class Compra {
 		
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 				
-		return String.format("%s;%s;%s",
+		return String.format("%s;%s;%s;%s",
+				id_compra,
 				descricao,
-				loja ? "Sim" : "Não",
+				varejo ? "Varejo" : "Atacado",
 				data.format(formato)
 				);
-
 	}
 		
 
@@ -38,10 +54,10 @@ public class Compra {
 		this.descricao = descricao;
 	}
 	public boolean isLoja() {
-		return loja;
+		return varejo;
 	}
 	public void setLoja(boolean loja) {
-		this.loja = loja;
+		this.varejo = loja;
 	}
 	public Cliente getCliente() {
 		return cliente;

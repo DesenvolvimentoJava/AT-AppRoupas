@@ -10,6 +10,8 @@ import br.edu.infnet.approupas.model.domain.Infantil;
 import br.edu.infnet.approupas.model.domain.Masculina;
 import br.edu.infnet.approupas.model.domain.Roupa;
 import br.edu.infnet.approupas.model.exceptions.ClienteInvalidoException;
+import br.edu.infnet.approupas.model.exceptions.CompraSemClienteException;
+import br.edu.infnet.approupas.model.exceptions.CompraSemRoupasException;
 import br.edu.infnet.approupas.model.exceptions.QuantidadeException;
 import br.edu.infnet.approupas.model.exceptions.ValoresException;
 
@@ -121,46 +123,52 @@ public class CompraTest {
 
 
 		try {
-			Compra comp1 = new Compra();
+			Compra comp1 = new Compra(new Cliente("huguinho", "1234567891011", "Rua huguinho, 1", "eu@huguinho.com"), pedido1);
 			comp1.setDescricao("Primeira Compra");
 			comp1.setLoja(false);
-			comp1.setCliente(new Cliente("huguinho", "1234567891011", "Rua huguinho, 1", "eu@huguinho.com"));
-			comp1.setRoupas(pedido1);
 			comp1.imprimir();
-		} catch (ClienteInvalidoException e) {
+		} catch (ClienteInvalidoException | CompraSemClienteException | CompraSemRoupasException e) {
 			System.out.println("[ ERRO ] " + e.getMessage());
 		}
 		
 		try {
-			Compra comp2 = new Compra();
+			Compra comp2 = new Compra(new Cliente("huguinho", "1234567891011", "Rua huguinho, 1", "eu@huguinho.com"), pedido2);
 			comp2.setDescricao("Segunda Compra");
 			comp2.setLoja(true);
-			comp2.setCliente(new Cliente("huguinho", "1234567891011", "Rua huguinho, 1", "eu@huguinho.com"));
-			comp2.setRoupas(pedido2);
+//			comp2.setCliente(new Cliente("huguinho", "1234567891011", "Rua huguinho, 1", "eu@huguinho.com"));
+//			comp2.setRoupas(pedido2);
 			comp2.imprimir();
-		} catch (ClienteInvalidoException e) {
+		} catch (ClienteInvalidoException  | CompraSemClienteException | CompraSemRoupasException e) {
 				System.out.println("[ ERRO ] " + e.getMessage());
 		}
 
 		try {
-			Compra comp3 = new Compra();
+			Compra comp3 = new Compra(new Cliente("joaozinho", "1234567891011", "Rua joaozinho, 2", "eu@joaozinho.com"), pedido3);
 			comp3.setDescricao("Terceira Compra");
-			comp3.setCliente(new Cliente("joaozinho", "1234567891011", "Rua joaozinho, 2", "eu@joaozinho.com"));
 			comp3.setLoja(true);
-			comp3.setRoupas(pedido3);
 			comp3.imprimir();
-		} catch (ClienteInvalidoException e) {
+		} catch (ClienteInvalidoException | CompraSemClienteException | CompraSemRoupasException  e) {
 			System.out.println("[ ERRO ] " + e.getMessage());
 		}
 
 		try {
-			Compra comp4 = new Compra();
+			Compra comp4 = new Compra(new Cliente("mariazinha", "1234567891011", "Rua mariazinha, 3", "eu@mariazinha.com"), null);
 			comp4.setDescricao("Quartar Compra");
-			comp4.setCliente(new Cliente("mariazinha", "1234567891011", "Rua mariazinha, 3", "eu@mariazinha.com"));
 			comp4.setLoja(false);
-			comp4.setRoupas(pedido4);
 			comp4.imprimir();
-		} catch (ClienteInvalidoException e) {
+		} catch (ClienteInvalidoException  | CompraSemClienteException | CompraSemRoupasException e) {
+			System.out.println("[ ERRO ] " + e.getMessage());
+		}
+		
+		try {
+			//Cliente c10 = new Cliente("mariazinha", "1234567891011", "Rua mariazinha, 3", "eu@mariazinha.com");
+			
+			Compra comp5 = new Compra(null, pedido4);
+			comp5.setDescricao("Quartar Compra");
+			comp5.setCliente(new Cliente("mariazinha", "1234567891011", "Rua mariazinha, 3", "eu@mariazinha.com"));
+			comp5.setLoja(false);
+			comp5.imprimir();
+		} catch (ClienteInvalidoException | CompraSemClienteException | CompraSemRoupasException e) {
 			System.out.println("[ ERRO ] " + e.getMessage());
 		}
 	}

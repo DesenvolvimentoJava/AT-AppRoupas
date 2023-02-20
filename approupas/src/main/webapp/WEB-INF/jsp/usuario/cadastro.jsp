@@ -7,33 +7,38 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="#">AppRoupas</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+	    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-	    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-	      <ul class="navbar-nav">
+	    <div class="collapse navbar-collapse" id="mynavbar">
+	      <ul class="navbar-nav me-auto">
 	        <li class="nav-item">
-	          <a class="nav-link" href="/usuario">Usuário</a>
+	          <a class="nav-link" href="javascript:void(0)">Link</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Link</a>
+	          <a class="nav-link" href="javascript:void(0)">Link</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Link</a>
-	        </li>    
+	          <a class="nav-link" href="javascript:void(0)">Link</a>
+	        </li>
 	      </ul>
+	      <form class="d-flex">
+	        <input class="form-control me-2" type="text" placeholder="Search">
+	        <button class="btn btn-primary" type="button">Search</button>
+	      </form>
 	    </div>
 	  </div>
 	</nav>
 	<div class="container mt-5 d-flex flex-column align-items-center border border-2 rounded pt-5 pb-5">
 		<h2>Cadastro de Usuário</h2>
-		<form action="/usuario/cadastrar" method="post" class="w-50" >
+		<form action="/usuario/incluir" method="post" class="w-50" >
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="Nome" name="nome">
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="Sobrenome" name="sobrenome">
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="E-mail" name="email">
+	    	<input type="password" class="form-control form-control-lg mt-3" placeholder="senha" name="senha">
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="Telefone" name="tel">
 	    	<div class="d-flex justify-content-around">
 		    	<div class="form-check form-switch mt-3">

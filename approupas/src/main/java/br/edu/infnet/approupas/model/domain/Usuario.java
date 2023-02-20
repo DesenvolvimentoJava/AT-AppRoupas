@@ -4,14 +4,24 @@ public class Usuario {
 	
 	private String nome;
 	private String sobrenome;
+	private String senha;
 	private String email;
 	private String tel;
 	private String tipo;
+
+	public Usuario() {
+		
+	}
 	
-	public Usuario(String nome, String sobrenome, String email) {
-		this.setNome(nome);
-		this.setSobrenome(sobrenome);
+	public Usuario(String email, String senha) {
+		this();
 		this.setEmail(email);
+		this.setSenha(senha);
+	}
+	
+	public Usuario(String nome, String email, String senha) {
+		this(email, senha);
+		this.setNome(nome);
 	}
 	
 	
@@ -27,9 +37,15 @@ public class Usuario {
 	}
 	
 	
-	
-	
-	
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+		
 	
 	public String getNome() {
 		return nome;

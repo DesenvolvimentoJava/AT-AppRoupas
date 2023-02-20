@@ -1,31 +1,48 @@
 package br.edu.infnet.approupas.controller;
 
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import br.edu.infnet.approupas.model.domain.Usuario;
+import br.edu.infnet.approupas.model.repository.UsuarioRepository;
 
 
 
 @Controller
 public class UsuarioController {
 	
-	@GetMapping(value="/usuario")
-	public String telaCadastro() {
+	public UsuarioController() {
 		
+	}
+	
+	@GetMapping(value = "/usuario")
+	public String telaCadastro() {
 		return "usuario/cadastro";
 	}
-	
-	@PostMapping(value="/usuario/cadastrar")
-	public String cadastrarUsuarios(Usuario usuario) { 
+
+	@GetMapping(value = "/usuario/lista")
+	public String telaLista() {
+
+		List<Usuario> lista = UsuarioRepository.obterLista();
 		
-		System.out.println("Inclusão realizada com sucesso: " + usuario);
+		System.out.println("Quantidade de usuários = " + lista.size());
+
+		for(Usuario user : lista) {
+			System.out.printf("%s - %s\n", user.getNome(), user.getEmail());
+		}		
 		
-		return "redirect:/";
+		return "usuario/lista";
 	}
-	
+
+	@PostMapping(value = "/usuario/incluir")
+	public String incluir(Usuario usuario) {
+
+		UsuarioRepository.incluir(usuario);
+		
+		return "redirect:/usuario/lista";
+	}
 
 
 }

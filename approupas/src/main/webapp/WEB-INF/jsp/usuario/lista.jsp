@@ -1,79 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>AppRoupas</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>AppRoupas</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="mynavbar">
-	      <ul class="navbar-nav me-auto">
-	        <li class="nav-item">
-	          <a class="nav-link" href="javascript:void(0)">Link</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="javascript:void(0)">Link</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="javascript:void(0)">Link</a>
-	        </li>
-	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-2" type="text" placeholder="Search">
-	        <button class="btn btn-primary" type="button">Search</button>
-	      </form>
-	    </div>
-	  </div>
-	</nav>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	<main class="container mt-5 d-flex flex-column align-items-center">
-		<form action="/usuario" method="get" class="w-50" >
-			<h2>LISTA DE USUÁRIOS</h2>
+		<c:if test="${not empty mensagem}">
+			<div class="alert alert-success">
+				<strong>Sucesso!</strong> ${mensagem}
+			</div>
+		</c:if>
+		
+		<h2>LISTA DE USUÁRIOS</h2>
+			<c:if test="${empty usuarios}">
+				<h5>Não existem usuarios cadastrados!!!</h5>
+			</c:if>
 			
-			<table class="table table-striped">
-				<thead>
-					<th>Nome</th>
-					<th>Sobrenome</th>
-					<th>E-mail</th>
-					<th>Senha</th>
-					<th>Telefone</th>
-					<th>Tipo</th>
-				</thead>
-				<tbody>
-				    <tr>
-				      <td>Alan</td>
-				      <td>dos Santos</td>
-				      <td>eu@webmail.com</td>
-				      <td>123456</td>
-				      <td>1499999999</td>
-				      <td>Administrador</td>
-				    </tr>
-				    <tr>
-				      <td>Alan</td>
-				      <td>dos Santos</td>
-				      <td>eu@webmail.com</td>
-				      <td>123456</td>
-				      <td>1499999999</td>
-				      <td>Administrador</td>
-				    </tr>
-				    <tr>
-				      <td>Alan</td>
-				      <td>dos Santos</td>
-				      <td>eu@webmail.com</td>
-				      <td>123456</td>
-				      <td>1499999999</td>
-				      <td>Administrador</td>
-				    </tr>
-				 </tbody>
-			</table>
-			<button type="submit" class="btn btn-primary">Novo</button>
-		</form>
+			<c:if test="${not empty usuarios}">
+				<h5>Quantidade de usuários cadastrados: ${usuarios.size()} !!!</h5>
+
+				<table class="table table-striped container">
+					<thead>
+						<th>Id</th>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>E-mail</th>
+						<th>Senha</th>
+						<th>Telefone</th>
+						<th>Tipo</th>
+						<th></th>
+					</thead>
+					<tbody>
+						<c:forEach var="u" items="${usuarios}">
+							<tr>
+								<td>${u.id}</td>
+								<td>${u.nome}</td>
+								<td>${u.sobrenome}</td>
+								<td>${u.email}</td>
+								<td>${u.senha}</td>
+								<td>${u.tel}</td>
+								<td><c:if test="${u.tipo == '1'}">Administrador</c:if> <c:if
+										test="${u.tipo == '2'}">Funcionario</c:if> <c:if
+										test="${u.tipo == '3'}">Cliente</c:if></td>
+								<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 	</main>
 </body>
 </html>

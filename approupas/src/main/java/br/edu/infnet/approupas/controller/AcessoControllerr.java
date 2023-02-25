@@ -1,6 +1,7 @@
 package br.edu.infnet.approupas.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,15 +18,17 @@ public class AcessoControllerr {
 	}
 	
 	@PostMapping(value = "/login")
-	public String login(@RequestParam String email, @RequestParam String senha) {
+	public String login(Model model, @RequestParam String email, @RequestParam String senha) {
 		
 		Usuario user = new Usuario(email, senha);
 
 		if(AcessoRepository.autenticar(user) != null) {
-			return "redirect:/login";
+			return "redirect:/home";
 		}
 		
-		return "redirect:/home";
+		model.addAttribute("mensagem", "As credenciais para o e-mail: "+ email + " estão incorretas!");
+		
+		return telaLogin();
 	}
 	
 

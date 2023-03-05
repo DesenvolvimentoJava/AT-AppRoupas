@@ -6,6 +6,7 @@ import br.edu.infnet.approupas.model.exceptions.ValoresException;
 
 public class Infantil extends Roupa {
 	
+	private Integer Id;
 	private boolean conjunto;
 	private int numeracao; // 0 até 16
 	private String cor;
@@ -69,6 +70,16 @@ public class Infantil extends Roupa {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+	
+	
 	
 	
 

@@ -19,6 +19,7 @@
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="E-mail" name="email">
 	    	<input type="password" class="form-control form-control-lg mt-3" placeholder="senha" name="senha">
 	    	<input type="text" class="form-control form-control-lg mt-3" placeholder="Telefone" name="tel">
+	    	<label>Tipo:</label>
 	    	<div class="d-flex justify-content-around">
 		    	<div class="form-check form-switch mt-3">
 		    		<label class="form-check-label" for="adm">Administrador</label>

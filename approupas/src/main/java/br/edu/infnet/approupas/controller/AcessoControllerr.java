@@ -1,15 +1,20 @@
 package br.edu.infnet.approupas.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.approupas.model.domain.Usuario;
 import br.edu.infnet.approupas.model.repository.AcessoRepository;
 
 @Controller
+@SessionAttributes("usuario")
 public class AcessoControllerr {
 	
 	@GetMapping(value = "/login")
@@ -23,6 +28,7 @@ public class AcessoControllerr {
 		Usuario user = new Usuario(email, senha);
 
 		if(AcessoRepository.autenticar(user) != null) {
+			model.addAttribute("usuario", user);
 			return "redirect:/home";
 		}
 		
@@ -31,5 +37,15 @@ public class AcessoControllerr {
 		return telaLogin();
 	}
 	
-
+	
+	@GetMapping(value= "/logout")
+	public String logout(HttpSession session, SessionStatus status) {
+		
+		status.setComplete();
+		
+		//session.removeAtribute("usuario");
+		
+		return "redirect:/";
+	}
+	
 }

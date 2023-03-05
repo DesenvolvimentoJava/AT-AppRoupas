@@ -15,17 +15,24 @@
     </div>
     <ul class="nav navbar-nav d-flex flex-row">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="/usuario/lista">Usuários</a></li>
-      <li><a href="#">Cliente</a></li>
-      <li><a href="#">Roupa</a></li>
-      <li><a href="#">Masculina</a></li>
-      <li><a href="#">Feminina</a></li>
-      <li><a href="#">Infantil</a></li>
-      <li><a href="#">Compras</a></li>
+      	<c:if test="${not empty usuario}">
+	      <li><a href="/usuario/lista">Usuários</a></li>
+	      <li><a href="/cliente/lista">Cliente</a></li>
+	      <li><a href="/roupa/lista">Roupa</a></li>
+	      <li><a href="/masculina/lista">Masculina</a></li>
+	      <li><a href="/feminina/lista">Feminina</a></li>
+	      <li><a href="/infantil/lista">Infantil</a></li>
+	      <li><a href="#">Compras</a></li>
+		</c:if>
     </ul>
     <ul class="nav navbar-nav navbar-right d-flex flex-row">
-      <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    	<c:if test="${empty usuario}">
+      		<li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      		<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      	</c:if>	
+      	<c:if test="${not empty usuario}">	
+      		<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout, ${usuario.nome}</a></li>
+      	</c:if>
     </ul>
   </div>
 </nav>

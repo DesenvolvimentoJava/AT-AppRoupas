@@ -9,6 +9,7 @@ import br.edu.infnet.approupas.model.exceptions.ValoresException;
 
 public class Feminina extends Roupa {
 	
+	private Integer Id;
 	private boolean estampa;
 	private String tamanho;
 	private int colecao;
@@ -74,6 +75,16 @@ public class Feminina extends Roupa {
 	}
 	public void setColecao(int colecao) {
 		this.colecao = colecao;
+	}
+
+
+	public Integer getId() {
+		return Id;
+	}
+
+
+	public void setId(Integer id) {
+		Id = id;
 	}
 	
 	

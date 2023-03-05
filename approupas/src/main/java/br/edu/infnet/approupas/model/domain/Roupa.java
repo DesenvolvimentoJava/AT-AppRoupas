@@ -6,7 +6,8 @@ import br.edu.infnet.approupas.model.exceptions.ValoresException;
 
 
 public abstract class Roupa {
-
+	
+	private Integer Id;
 	private int codProd;
 	private String descricao;
 	private float valorCusto;
@@ -78,6 +79,16 @@ public abstract class Roupa {
 	public int getQtdade() {
 		return qtdade;
 	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+	
+	
 	
 
 	
